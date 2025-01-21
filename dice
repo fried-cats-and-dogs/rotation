@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main(void)
+{
+    int i;
+    while(1)
+    {
+        srand((int)time(NULL));
+        i=rand();
+        if(i<RAND_MAX-RAND_MAX%6)
+        {
+            printf("%d",i%6+1);
+            break;
+        }
+    }
+}
