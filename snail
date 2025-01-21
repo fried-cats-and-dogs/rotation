@@ -1,0 +1,42 @@
+#include <stdio.h>
+int main(void)
+{
+    int length, a=1, b,c;
+    scanf("%d", &length);
+    int snail[length][length];
+    if(length%2==1)
+    {
+        snail[length/2][length/2]=length*length;
+    }
+    for(c=0;c<length/2;c++)
+    {
+        for(b=2*c;b<length;b++)
+        {
+            snail[c][b-c]=a;
+            a++;
+        }
+        for(b=2*c+1;b<length;b++)
+        {
+            snail[b-c][length-c-1]=a;
+            a++;
+        }
+        for(b=2*c+1;b<length;b++)
+        {
+            snail[length-1-c][length-b-1+c]=a;
+            a++;
+        }
+        for(b=2*c+2;b<length;b++)
+        {
+            snail[length-b+c][c]=a;
+            a++;
+        }
+    }
+    for(b=0;b<length;b++)
+    {
+        for(c=0;c<length;c++)
+        {
+            printf("%d ",snail[b][c]);
+        }
+        printf("\n");
+    }
+}
