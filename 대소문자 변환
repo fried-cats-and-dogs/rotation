@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main(void)
+{
+    int alpha;
+    int ha='a'-'A';
+    alpha=getchar();
+    if(alpha>='A'&&alpha<='Z')
+    {
+        alpha+=ha;
+        putchar(alpha);
+    }else if(alpha>='a'&&alpha<='z')
+    {
+        alpha-=ha;
+        putchar(alpha);
+    }else
+    {
+        printf("오류");
+    }
+}
