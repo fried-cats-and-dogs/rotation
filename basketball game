@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main(void)
+{
+    int computer[3],player[3],strike,ball,numbers[10]={0,1,2,3,4,5,6,7,8,9};
+    int a,i,b,j;
+    srand((int)time(NULL));
+    for(i=0;i<3;i++)
+    {
+        while(1)
+        {
+            a=rand();
+            if(a<RAND_MAX-RAND_MAX%10)
+            {
+                b=a%10;
+                if(numbers[b]!=-1)
+                {
+                    computer[i]=b;
+                    numbers[b]=-1;
+                    break;
+                }
+            }
+        }
+    }
+    printf("게임 시작\n");
+    int number=0;
+    while(1)
+    {
+        strike=0, ball=0;
+        printf("3개의 숫자 선택: \n");
+        for(i=0;i<3;i++)
+        {
+            scanf("%d", &player[i]);
+        }
+        for(i=0;i<3;i++)
+        {
+            for(j=0;j<3;j++)
+            {
+                if(i==j)
+                {
+                    if(player[i]==computer[j])
+                    {
+                        strike++;
+                    }
+                }else if(player[i]==computer[j])
+                {
+                    ball++;
+                }
+            }
+        }
+        number++;
+        if (strike==3)
+        {
+            break;
+        }
+        if (strike==0&&ball==0)
+        {
+            printf("out!!\n");
+        }else if(strike!=3)
+        {
+            printf("%d번째 도전 결과: %dstrike %dball!!\n",number,strike,ball);
+        }
+    }
+    printf("Game Over(%d번째 시도에 성공)", number);
+}
