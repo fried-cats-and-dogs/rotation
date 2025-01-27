@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main(void)
+{
+	FILE* paper = fopen("food.txt", "rt");
+	FILE* copy = fopen("hobby.txt", "wt");
+	char inter[20];
+	int read;
+	if (paper == NULL || copy == NULL)
+	{
+		puts("파일이 없음");
+	}
+	while (1)
+	{
+		read=fread((void*)inter, 1, sizeof(inter), paper);
+		if (read < 20)
+		{
+			fwrite((void*)inter, 1, sizeof(read), copy);
+			puts("완료");
+			break;
+		}
+		else
+		{
+			puts("복사 실패");
+		}
+		fwrite((void*)inter, 1, sizeof(inter), copy);
+	}
+	fclose(copy);
+	fclose(paper);
+	return 0;
+}
